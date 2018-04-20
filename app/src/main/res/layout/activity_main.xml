@@ -7,23 +7,99 @@
     android:layout_height="match_parent"
     tools:context="com.example.navid.voicecontrol.MainActivity">
 
-    <TextView
-        android:id="@+id/txtSpeechInput"
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textColor="@color/gray"
-        android:textSize="26dp"
-        android:textStyle="normal" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/top_layout">
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:id="@+id/button_up"
+            android:layout_toRightOf="@+id/button_left"
+            android:background="@drawable/roundb_up"/>
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:id="@+id/button_down"
+            android:layout_toRightOf="@+id/button_left"
+            android:layout_below="@+id/button_up"
+            android:layout_marginTop="@dimen/button_height"
+            android:background="@drawable/roundb_down"/>
+        <Button
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_width"
+            android:id="@+id/button_left"
+            android:layout_alignTop="@+id/button_right"
+            android:background="@drawable/roundb_left"/>
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:id="@+id/button_right"
+            android:layout_toRightOf="@+id/button_up"
+            android:layout_marginTop="@dimen/button_height"
+            android:background="@drawable/roundb_right"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:id="@+id/middle_layout"
+        android:layout_below="@+id/top_layout"
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/g1"
+            android:background="@drawable/otto_app_icons_shakeleg"
+            android:onClick="onJumpClick"/>
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/g2"
+            android:layout_toRightOf="@+id/g1"
+            android:background="@drawable/otto_app_icons_flapping"
+            android:onClick="onJumpClick"/>
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/g3"
+            android:layout_toRightOf="@+id/g2"
+            android:background="@drawable/otto_app_icons_bend"
+            android:onClick="onJumpClick"/>
+
+        <Button
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/otto_app_icons_jump"
+            android:id="@+id/g4"
+            android:layout_toRightOf="@+id/g3"
+            android:onClick="onJumpClick"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/middle_layout"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -47,6 +123,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/send" />
+        <TextView
+            android:id="@+id/txtSpeechInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:textSize="26dp"
+            android:textStyle="normal" />
     </LinearLayout>
 
 

@@ -20,6 +20,7 @@ import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -34,6 +35,10 @@ public class MainActivity extends Activity {
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private Button mSendButton;
+    private Button mButtonUp;
+    private Button mButtonDown;
+    private Button mButtonRight;
+    private Button mButtonLeft;
     private String BTmessage = null;
 
     private static final String TAG = "BluetoothChatFragment";
@@ -72,6 +77,83 @@ public class MainActivity extends Activity {
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
         mSendButton = (Button) findViewById(R.id.button_send);
+
+        mButtonUp = (Button) findViewById(R.id.button_up);
+        mButtonDown = (Button) findViewById(R.id.button_down);
+        mButtonRight = (Button) findViewById(R.id.button_right);
+        mButtonLeft = (Button) findViewById(R.id.button_left);
+
+        mButtonUp.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        //Go Forward
+                        sendMessage("M 1 1000\r");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        //Send Stop
+                        sendMessage("S\r");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        mButtonDown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        //Go Back
+                        sendMessage("M 2 1000\r");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        //Send Stop
+                        sendMessage("S\r");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        mButtonLeft.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        //Go Left
+                        sendMessage("M 3 1000\r");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        //Send Stop
+                        sendMessage("S\r");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        mButtonRight.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        //Go Right
+                        sendMessage("M 4 1000\r");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        //Send Stop
+                        sendMessage("S\r");
+                        break;
+                }
+                return false;
+            }
+        });
 
         // hide the action bar
 //        getActionBar().show();
@@ -424,6 +506,24 @@ public class MainActivity extends Activity {
             }
         }
         return false;
+    }
+
+    public void onJumpClick(View mView){
+        switch(mView.getId()){
+            case R.id.g1:   //shake leg
+                sendMessage("M 17 500\r");
+                break;
+            case R.id.g2:   //flapping
+                sendMessage("M 13 1000 30\r");
+                break;
+            case R.id.g3:   //bend
+                sendMessage("M 15 500\r");
+                break;
+            case R.id.g4:   //jump
+                sendMessage("M 11 1000\r");
+                break;
+        }
+
     }
 
 

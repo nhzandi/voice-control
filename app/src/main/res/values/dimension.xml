@@ -1,0 +1,10 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <dimen name="button_width">60dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="button_top_margin">30dp</dimen>
+
+    <dimen name="button">30dp</dimen>
+
+
+</resources>
